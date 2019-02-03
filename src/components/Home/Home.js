@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { Container, Content, Form, Item, Input, Button, Text, Spinner } from 'native-base'
 
 const Home = (props) => {
-  console.log(props)
   return (
     <Container style={{ flex: 1 }}>
       <Container style={{flex: 1}} />
