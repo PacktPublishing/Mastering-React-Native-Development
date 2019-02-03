@@ -15,10 +15,10 @@ const AppNavigator = createStackNavigator(
   }
 )
 
-export default AppNavigator
-
 // New in React-Navigation 3, you have to create an AppContainer around the navigator
-// const AppContainer = createAppContainer(AppNavigator)
+const AppContainer = createAppContainer(AppNavigator)
+
+export default AppContainer
 
 // class AppNavigation extends Component {
 //   constructor(props) {

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
+import * as Keychain from 'react-native-keychain'
 import * as homeActions from './actions'
+import Home from './Home'
 
-class Home extends Component {
+class HomeContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -22,12 +23,18 @@ class Home extends Component {
   }
 
   setCredentialsLocal = () => {
-    this.props.homeActions.setCredentials(this.state.username, this.state.password)
+    this.props.homeActions.saveCredentials(this.state.username, this.state.password)
+  }
+
+  getCredentials = async () => {
+    const password = await Keychain.getGenericPassword()
+    console.log('password', password)
   }
 
   render () {
     return (
       <Home
+        getCredentials={this.getCredentials}
         setUsername={this.setUsername}
         setPassword={this.setPassword}
         setCredentials={this.setCredentialsLocal}
@@ -36,7 +43,10 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => {
+  console.log(state)
+  return state
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -44,6 +54,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedHome = connect(mapStateToProps, mapDispatchToProps)(Home)
+const ConnectedHome = connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
 
 export { ConnectedHome as Home }

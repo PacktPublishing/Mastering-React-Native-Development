@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Form, Item, Input } from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Button, Text } from 'native-base';
 
 const Home = (props) => {
   return (
-    <Container style={{ flex: 1, backgroundColor: 'red' }}>
+    <Container style={{ flex: 1 }}>
       <Header />
       <Content>
         <Form>
@@ -24,6 +24,9 @@ const Home = (props) => {
         </Form>
         <Button onPress={props.setCredentials}>
           <Text>Submit</Text>
+        </Button>
+        <Button onPress={props.getCredentials}>
+          <Text>Get Password</Text>
         </Button>
       </Content>
     </Container>
