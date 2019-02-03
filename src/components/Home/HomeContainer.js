@@ -34,6 +34,7 @@ class HomeContainer extends Component {
   render () {
     return (
       <Home
+        {...this.props}
         getCredentials={this.getCredentials}
         setUsername={this.setUsername}
         setPassword={this.setPassword}
@@ -44,8 +45,7 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
-  return state
+  return state.Home
 }
 
 const mapDispatchToProps = dispatch => {

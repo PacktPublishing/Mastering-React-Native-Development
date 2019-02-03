@@ -3,11 +3,11 @@ import * as c from './constants'
 const initialState = {
   settingPassword: false,
   username: '',
-  error: null,
+  settingPasswordError: null,
 }
 
 const actionHandlers = {
-  [c.SAVE_CREDENTIALS_START]: (state, action) => {
+  [c.SAVE_CREDENTIALS_START]: (state) => {
     return {
       ...state,
       settingPassword: true,
@@ -18,7 +18,7 @@ const actionHandlers = {
       ...state,
       settingPassword: false,
       username: action.username,
-      error: null,
+      settingPasswordError: null,
     }
   },
   [c.SAVE_CREDENTIALS_FAIL]: (state, action) => {

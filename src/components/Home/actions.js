@@ -17,11 +17,15 @@ const saveCredentialsFail = (error) => ({
 
 export const saveCredentials = (username, pw) => async (dispatch) => {
   dispatch(saveCredentialsStart())
+  if (username.length <= 0 || pw.length <= 0) {
+    dispatch(saveCredentialsFail('Please Insert Username and Password'))
+    return
+  }
   try {
     await Keychain.setGenericPassword(username, pw)
     dispatch(saveCredentialsSuccess(username))
   } catch (err) {
     console.log('ERROR SAVING CREDENTIALS: ', err)
-    dispatch(saveCredentialsFail(err))
+    dispatch(saveCredentialsFail('Error Saving Credentials in Keychain'))
   }
 }
