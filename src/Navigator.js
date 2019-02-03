@@ -1,5 +1,3 @@
-import React, { Component } from "react"
-import { connect } from 'react-redux'
 import { createStackNavigator, createAppContainer } from "react-navigation"
 
 import { Home } from './components/Home'
@@ -19,14 +17,3 @@ const AppNavigator = createStackNavigator(
 const AppContainer = createAppContainer(AppNavigator)
 
 export default AppContainer
-
-// class AppNavigation extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render () {
-//     return <AppContainer screenProps={this.props} />
-//   }
-// }
-// export default connect()(AppNavigation);

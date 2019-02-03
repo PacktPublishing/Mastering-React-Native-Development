@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { Container, Header, Content, Form, Item, Input, Button, Text } from 'native-base';
+import React from 'react'
+import { Container, Content, Form, Item, Input, Button, Text } from 'native-base'
 
 const Home = (props) => {
   return (
     <Container style={{ flex: 1 }}>
-      <Header />
       <Content>
         <Form>
           <Item>

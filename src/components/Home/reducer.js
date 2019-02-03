@@ -1,5 +1,4 @@
 import * as c from './constants'
-import _ from 'lodash'
 
 const initialState = {
   settingPassword: false,
