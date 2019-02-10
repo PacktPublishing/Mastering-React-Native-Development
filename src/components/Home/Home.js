@@ -35,7 +35,7 @@ const Home = (props) => {
       <Container style={{ flex: 2 }}>
         <Content padder contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'space-around' }}>
           {props.settingPasswordError && <Text syle={{ flex: 1, fontSize: 20 }}>{props.settingPasswordError}</Text>}
-          {props.username.length > 0 &&
+          {!props.settingPasswordError && props.username.length > 0 &&
             <Button flex={1} onPress={props.getCredentials}>
               <Text>Get Password</Text>
             </Button>

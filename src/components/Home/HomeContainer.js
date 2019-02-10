@@ -23,7 +23,13 @@ class HomeContainer extends Component {
   }
 
   setCredentialsLocal = () => {
-    this.props.homeActions.saveCredentials(this.state.username, this.state.password)
+    const userNameFromState = this.state.username
+    const passwordFromState = this.state.password
+    this.props.homeActions.saveCredentials(userNameFromState, passwordFromState)
+    this.setState({
+      username: '',
+      password: '',
+    })
   }
 
   getCredentials = async () => {
