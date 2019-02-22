@@ -54,13 +54,12 @@ export const loginWithFacebook = () => async (dispatch) => {
     if (loginResult.isCancelled) {
       dispatch(loginWithFacebookFail('Login Cancelled'))
     } else {
-      console.log(
-        "Login success with permissions: " +
-        loginResult.grantedPermissions.toString()
-      )
       const fbAccessTokenData = await AccessToken.getCurrentAccessToken()
-      const facebookResponse = await fetch(`https://graph.facebook.com/v2.5/me?fields=name,picture&access_token=${fbAccessTokenData.accessToken.toString()}`, { headers: { 'Content-Type': 'application/json' } })
+      const facebookResponse = await fetch(`https://graph.facebook.com/v2.5/me?fields=name,picture&access_token=${fbAccessTokenData.accessToken.toString()}`, {
+        headers: { 'Content-Type': 'application/json' }
+      })
       const facebookUser = JSON.parse(facebookResponse._bodyText)
+      
       // Repurpose the saveCredentials function to store access token
       await saveCredentials(facebookUser.id, fbAccessTokenData.accessToken.toString())
       dispatch(loginWithFacebookSuccess(facebookUser))
