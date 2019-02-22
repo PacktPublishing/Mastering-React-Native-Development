@@ -14,7 +14,6 @@ class LoginContainer extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.loggingIn && !this.props.loggingIn && !this.props.loginError) {
-      // this.props.navigation.actions.reset(['Welcome', { facebookUser: this.props.facebookUser })
       this.props.navigation.reset([NavigationActions.navigate({ routeName: 'Welcome', params: { facebookUser: this.props.facebookUser } })], 0)
     }
   }
