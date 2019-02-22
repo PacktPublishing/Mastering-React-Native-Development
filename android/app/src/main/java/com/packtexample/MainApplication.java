@@ -3,6 +3,8 @@ package com.packtexample;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import im.shimo.react.cookie.CookieManagerPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.oblador.keychain.KeychainPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new CookieManagerPackage(),
+            new FBSDKPackage(),
           new KeychainPackage(),
           new RNGestureHandlerPackage()
       );

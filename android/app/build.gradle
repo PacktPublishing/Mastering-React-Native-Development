@@ -134,6 +134,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-cookie')
+    implementation project(':react-native-fbsdk')
     implementation project(':react-native-keychain')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

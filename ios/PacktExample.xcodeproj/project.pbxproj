@@ -42,6 +42,7 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* PacktExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PacktExampleTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		2E9386FE221EC6550018192F /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E9386DA221EC6400018192F /* libRCTFBSDK.a */; };
 		32EA836BFC214453AEF1CCFD /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557788BC8B9240FA9D342B5A /* libRNGestureHandler.a */; };
 		3313D13197DF46F6921276FA /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EAC08342CD425382D9D0D2 /* libRNKeychain.a */; };
 		3BA04782747C49A1B8085E35 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D91496D3A1E5495F99204B33 /* FontAwesome.ttf */; };
@@ -55,10 +56,12 @@
 		B7239AFC42284A5B816B1F68 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A116F08D3B08438296B75BB5 /* rubicon-icon-font.ttf */; };
 		B9A4D3197B624D719B6712E6 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2CCBDD5298E486DA82A206E /* Zocial.ttf */; };
 		B9E7351B430D4C1EB79FE068 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B646780CF84EDCA2E7DCDD /* FontAwesome5_Brands.ttf */; };
+		DFBCE5EEB5C8AB228F00A791 /* libPods-PacktExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0C35FEB44E78B7E6194EAC /* libPods-PacktExample.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		F396235406D24EAA8F75886D /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA2793A7A24449B96AD0C0B /* Roboto_medium.ttf */; };
 		FA12D370C35F424094AAB771 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44B378D730B4429FA7F3BBF2 /* Ionicons.ttf */; };
+		FAADD2FBEE39483A90A192B8 /* libRNCookieManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A503A61CA6740DAB5AB0287 /* libRNCookieManager.a */; };
 		FEBBD6E5AAE64126A3A6AB0A /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D500E838722A4FE39545F19D /* Octicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -245,6 +248,27 @@
 			remoteGlobalIDString = 6478985F1F38BF9100DA1C12;
 			remoteInfo = "RNKeychain-tvOS";
 		};
+		2E9386D9221EC6400018192F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E9386D0221EC6400018192F /* RCTFBSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
+			remoteInfo = RCTFBSDK;
+		};
+		2E938759221ED3070018192F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52BCE69D34AE448C846524B7 /* RNCookieManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 101789301B283EE1006C41B8;
+			remoteInfo = RNCookieManager;
+		};
+		2E93875B221ED3070018192F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52BCE69D34AE448C846524B7 /* RNCookieManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1017893B1B283EE1006C41B8;
+			remoteInfo = RNCookieManagerTests;
+		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -379,12 +403,18 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PacktExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PacktExample/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1E28A2FDAE8442F8A8D54E15 /* RNCookieManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RNCookieManagerTests.xctest; sourceTree = "<group>"; };
+		28E6212F88B4942CA1FBBFAA /* Pods-PacktExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacktExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PacktExample/Pods-PacktExample.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* PacktExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PacktExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PacktExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PacktExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9386D0221EC6400018192F /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
+		3B0C35FEB44E78B7E6194EAC /* libPods-PacktExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PacktExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4435F60D3740CDCC752B7801 /* Pods-PacktExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacktExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PacktExample/Pods-PacktExample.release.xcconfig"; sourceTree = "<group>"; };
 		44B378D730B4429FA7F3BBF2 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		4AA2793A7A24449B96AD0C0B /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		4AD4FEB8B43D4363A7767F78 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		52BCE69D34AE448C846524B7 /* RNCookieManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCookieManager.xcodeproj; path = "../node_modules/react-native-cookie/ios/RNCookieManager.xcodeproj"; sourceTree = "<group>"; };
 		53085CA66B4D4B54BC05AF63 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		557788BC8B9240FA9D342B5A /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -394,6 +424,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8344A35845B246929219B3B3 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		968A28C87F734CB89007BFB7 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		9A503A61CA6740DAB5AB0287 /* libRNCookieManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCookieManager.a; sourceTree = "<group>"; };
 		A116F08D3B08438296B75BB5 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		A9EAC08342CD425382D9D0D2 /* libRNKeychain.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKeychain.a; sourceTree = "<group>"; };
 		ABF1AAC21BA044CE87558894 /* RNKeychain.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNKeychain.xcodeproj; path = "../node_modules/react-native-keychain/RNKeychain.xcodeproj"; sourceTree = "<group>"; };
@@ -425,6 +456,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E9386FE221EC6550018192F /* libRCTFBSDK.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -440,6 +472,8 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				32EA836BFC214453AEF1CCFD /* libRNGestureHandler.a in Frameworks */,
 				3313D13197DF46F6921276FA /* libRNKeychain.a in Frameworks */,
+				DFBCE5EEB5C8AB228F00A791 /* libPods-PacktExample.a in Frameworks */,
+				FAADD2FBEE39483A90A192B8 /* libRNCookieManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +626,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				3B0C35FEB44E78B7E6194EAC /* libPods-PacktExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -601,6 +636,8 @@
 			children = (
 				557788BC8B9240FA9D342B5A /* libRNGestureHandler.a */,
 				A9EAC08342CD425382D9D0D2 /* libRNKeychain.a */,
+				9A503A61CA6740DAB5AB0287 /* libRNCookieManager.a */,
+				1E28A2FDAE8442F8A8D54E15 /* RNCookieManagerTests.xctest */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -620,6 +657,32 @@
 				2E5EDB6F22062D17007012B7 /* libRNKeychain.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2E9386D1221EC6400018192F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E9386DA221EC6400018192F /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E938755221ED3070018192F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E93875A221ED3070018192F /* libRNCookieManager.a */,
+				2E93875C221ED3070018192F /* RNCookieManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49B2ED3D7E527F9883196265 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28E6212F88B4942CA1FBBFAA /* Pods-PacktExample.debug.xcconfig */,
+				4435F60D3740CDCC752B7801 /* Pods-PacktExample.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -668,6 +731,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2E9386D0221EC6400018192F /* RCTFBSDK.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -682,6 +746,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				B456E84D9D94420F8E42E358 /* RNGestureHandler.xcodeproj */,
 				ABF1AAC21BA044CE87558894 /* RNKeychain.xcodeproj */,
+				52BCE69D34AE448C846524B7 /* RNCookieManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -705,6 +770,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				7CC64BE6F35B444A9FC46D7B /* Resources */,
 				2E5EDB3522062D0E007012B7 /* Recovered References */,
+				49B2ED3D7E527F9883196265 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -756,10 +822,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PacktExample" */;
 			buildPhases = (
+				C8EC10D36226BBE3AFC4422A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				B6F2554D5B0BCB38628369B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -858,6 +926,10 @@
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
 				},
 				{
+					ProductGroup = 2E9386D1221EC6400018192F /* Products */;
+					ProjectRef = 2E9386D0221EC6400018192F /* RCTFBSDK.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
@@ -892,6 +964,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E938755221ED3070018192F /* Products */;
+					ProjectRef = 52BCE69D34AE448C846524B7 /* RNCookieManager.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E5EDB6322062D15007012B7 /* Products */;
@@ -1079,6 +1155,27 @@
 			fileType = archive.ar;
 			path = libRNKeychain.a;
 			remoteRef = 2E5EDB6E22062D17007012B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E9386DA221EC6400018192F /* libRCTFBSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDK.a;
+			remoteRef = 2E9386D9221EC6400018192F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E93875A221ED3070018192F /* libRNCookieManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCookieManager.a;
+			remoteRef = 2E938759221ED3070018192F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E93875C221ED3070018192F /* RNCookieManagerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RNCookieManagerTests.xctest;
+			remoteRef = 2E93875B221ED3070018192F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -1276,6 +1373,50 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		B6F2554D5B0BCB38628369B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PacktExample/Pods-PacktExample-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PacktExample/Pods-PacktExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8EC10D36226BBE3AFC4422A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PacktExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1353,12 +1494,15 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = PacktExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1381,12 +1525,15 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = PacktExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1402,6 +1549,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28E6212F88B4942CA1FBBFAA /* Pods-PacktExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1411,6 +1559,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = PacktExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1427,6 +1576,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4435F60D3740CDCC752B7801 /* Pods-PacktExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1435,6 +1585,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = PacktExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1465,11 +1616,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = "PacktExample-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1501,11 +1655,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = "PacktExample-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1536,11 +1693,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = "PacktExample-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1571,11 +1731,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-keychain/RNKeychainManager",
+					"$(SRCROOT)/../node_modules/react-native-cookie/ios",
 				);
 				INFOPLIST_FILE = "PacktExample-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);

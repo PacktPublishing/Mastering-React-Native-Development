@@ -1,10 +1,10 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
-import { reducer as HomeReducer } from './components/Home'
+import { reducer as LoginReducer } from './components/Login'
 
 const rootReducer = combineReducers({
-  Home: HomeReducer
+  Login: LoginReducer
 })
 
 // This just allows for multiple middlewares to be integrated with redux
