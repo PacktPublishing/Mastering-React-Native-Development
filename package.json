@@ -10,6 +10,7 @@
     "native-base": "^2.11.0",
     "react": "16.6.3",
     "react-native": "0.58.3",
+    "react-native-fbsdk": "^0.8.0",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-keychain": "^3.0.0",
     "react-navigation": "^3.1.2",
