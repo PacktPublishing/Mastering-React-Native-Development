@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PacktExample</string>
+    <string name="facebook_app_id">801348243543134</string>
 </resources>
