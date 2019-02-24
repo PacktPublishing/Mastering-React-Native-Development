@@ -4,6 +4,9 @@ const initialState = {
   settingPassword: false,
   username: '',
   settingPasswordError: null,
+  loggingIn: false,
+  loginError: null,
+  facebookUser: {},
 }
 
 const actionHandlers = {
@@ -26,6 +29,27 @@ const actionHandlers = {
       ...state,
       settingPassword: false,
       settingPasswordError: action.error,
+    }
+  },
+  [c.FACEBOOK_LOGIN_START]: (state) => {
+    return {
+      ...state,
+      loggingIn: true,
+    }
+  },
+  [c.FACEBOOK_LOGIN_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      loggingIn: false,
+      facebookUser: action.facebookUser,
+      loginError: null,
+    }
+  },
+  [c.FACEBOOK_LOGIN_FAIL]: (state, action) => {
+    return {
+      ...state,
+      loggingIn: false,
+      loginError: action.error,
     }
   },
 }

@@ -1,11 +1,14 @@
 import { createStackNavigator, createAppContainer } from "react-navigation"
 
-import { Login } from './components/Login'
+import { Login, Welcome } from './components'
 
 const AppNavigator = createStackNavigator(
   {
     Login: {
       screen: Login
+    },
+    Welcome: {
+      screen: Welcome
     },
   },
   {

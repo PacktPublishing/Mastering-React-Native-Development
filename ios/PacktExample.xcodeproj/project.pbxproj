@@ -42,6 +42,7 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* PacktExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PacktExampleTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		2E173EAF22224DE400851D32 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E173E8B22224DCE00851D32 /* libRCTFBSDK.a */; };
 		32EA836BFC214453AEF1CCFD /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557788BC8B9240FA9D342B5A /* libRNGestureHandler.a */; };
 		3313D13197DF46F6921276FA /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EAC08342CD425382D9D0D2 /* libRNKeychain.a */; };
 		3BA04782747C49A1B8085E35 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D91496D3A1E5495F99204B33 /* FontAwesome.ttf */; };
@@ -196,6 +197,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
 			remoteInfo = "double-conversion-tvOS";
+		};
+		2E173E8A22224DCE00851D32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E173E8122224DCE00851D32 /* RCTFBSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
+			remoteInfo = RCTFBSDK;
 		};
 		2E5EDB5B22062D11007012B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -383,6 +391,7 @@
 		2D02E47B1E0B4A5D006451C7 /* PacktExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PacktExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PacktExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PacktExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E173E8122224DCE00851D32 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		38AFABABC64D25874CA64A9B /* libPods-PacktExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PacktExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B378D730B4429FA7F3BBF2 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		4AA2793A7A24449B96AD0C0B /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -429,6 +438,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E173EAF22224DE400851D32 /* libRCTFBSDK.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -602,6 +612,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E173E8222224DCE00851D32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E173E8B22224DCE00851D32 /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E5EDB3522062D0E007012B7 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +692,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2E173E8122224DCE00851D32 /* RCTFBSDK.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -744,7 +763,6 @@
 				4B0430FAA5598712119A0729 /* Pods-PacktExample.debug.xcconfig */,
 				A95BBE4BC0E91204137F206C /* Pods-PacktExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -875,6 +893,10 @@
 				{
 					ProductGroup = ADBDB9201DFEBF0600ED6528 /* Products */;
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E173E8222224DCE00851D32 /* Products */;
+					ProjectRef = 2E173E8122224DCE00851D32 /* RCTFBSDK.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -1049,6 +1071,13 @@
 			fileType = archive.ar;
 			path = "libdouble-conversion.a";
 			remoteRef = 2DF0FFE82056DD460020B375 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E173E8B22224DCE00851D32 /* libRCTFBSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDK.a;
+			remoteRef = 2E173E8A22224DCE00851D32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2E5EDB5C22062D11007012B7 /* libjsi.a */ = {

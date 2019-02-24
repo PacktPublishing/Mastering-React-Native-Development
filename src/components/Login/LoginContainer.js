@@ -1,50 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as Keychain from 'react-native-keychain'
+import { NavigationActions } from 'react-navigation'
+
 import * as loginActions from './actions'
 import Login from './Login'
 
 class LoginContainer extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
-    this.state = {
-      username: '',
-      password: '',
+    this.state = {}
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.loggingIn && !this.props.loggingIn) {
+      this.props.navigation.reset([NavigationActions.navigate({ routeName: 'Welcome', params: { facebookUser: this.props.facebookUser } })], 0)
     }
   }
 
-  setUsername = (username) => {
-    this.setState({ username })
-  }
-  
-  setPassword = (password) => {
-    this.setState({ password })
-  }
-
-  setCredentialsLocal = () => {
-    const userNameFromState = this.state.username
-    const passwordFromState = this.state.password
-    this.props.loginActions.saveCredentials(userNameFromState, passwordFromState)
-    this.setState({
-      username: '',
-      password: '',
-    })
-  }
-
-  getCredentials = async () => {
-    const password = await Keychain.getGenericPassword()
-    console.log('password', password)
-  }
-
-  render () {
+  render() {
     return (
       <Login
         {...this.props}
-        getCredentials={this.getCredentials}
-        setUsername={this.setUsername}
-        setPassword={this.setPassword}
-        setCredentials={this.setCredentialsLocal}
+        loginWithFacebook={this.props.loginActions.loginWithFacebook}
+        loginError={this.props.loginError}
+        settingPasswordError={this.props.settingPasswordError}
       />
     )
   }
@@ -63,3 +43,4 @@ const mapDispatchToProps = dispatch => {
 const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
 
 export { ConnectedLogin as Login }
+

@@ -8,5 +8,7 @@ target 'PacktExample' do
   # Pods for PacktExample
 
   pod 'FacebookSDK'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
 
 end
