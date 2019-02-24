@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { Container, Content, Form, Item, Input, Button, Text, Spinner } from 'native-base'
 
-const Home = (props) => {
+const Login = (props) => {
   return (
     <Container style={{ flex: 1 }}>
       <Container style={{flex: 1}} />
@@ -46,4 +46,4 @@ const Home = (props) => {
   )
 }
 
-export default Home
+export default Login

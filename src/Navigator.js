@@ -1,15 +1,15 @@
 import { createStackNavigator, createAppContainer } from "react-navigation"
 
-import { Home } from './components/Home'
+import { Login } from './components/Login'
 
 const AppNavigator = createStackNavigator(
   {
-    Home: {
-      screen: Home
+    Login: {
+      screen: Login
     },
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Login"
   }
 )
 

@@ -1,6 +1,6 @@
 import actions from './actions'
 import constants from './constants'
-import { Home } from './HomeContainer'
+import { Login } from './LoginContainer'
 import reducer from './reducer'
 
-export { actions, constants, Home, reducer }
+export { actions, constants, Login, reducer }
