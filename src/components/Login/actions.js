@@ -70,7 +70,7 @@ export const loginWithFacebook = () => async (dispatch) => {
       const facebookUser = JSON.parse(facebookResponse._bodyText)
 
       // Repurpose the saveCredentials function to store access token
-      await saveCredentials(facebookUser.id, fbAccessTokenData.accessToken.toString())
+      await dispatch(saveCredentials(facebookUser.id, fbAccessTokenData.accessToken.toString()))
       dispatch(loginWithFacebookSuccess(facebookUser))
     }
   } catch (error) {

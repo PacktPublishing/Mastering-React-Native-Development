@@ -2,21 +2,43 @@ import { createStackNavigator, createAppContainer } from "react-navigation"
 
 import { Login, Welcome } from './components'
 
-const AppNavigator = createStackNavigator(
+const SignedInView = createStackNavigator(
   {
-    Login: {
-      screen: Login
-    },
     Welcome: {
       screen: Welcome
     },
   },
   {
-    initialRouteName: "Login"
+    initialRouteName: "Welcome",
+    headerMode: 'none',
   }
 )
 
-// New in React-Navigation 3, you have to create an AppContainer around the navigator
-const AppContainer = createAppContainer(AppNavigator)
+const SignedOutView = createStackNavigator(
+  {
+    Login: {
+      screen: Login
+    }
+  },
+  {
+    initialRouteName: "Login",
+    headerMode: 'none',
+  }
+)
 
-export default AppContainer
+export const createAppNavigator = (signedIn = false) => {
+  const appStackNavigator = createStackNavigator(
+    {
+      SignedIn: {
+        screen: SignedInView
+      },
+      SignedOut: {
+        screen: SignedOutView
+      },
+    },
+    {
+      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut'
+    }
+  )
+  return createAppContainer(appStackNavigator)
+}

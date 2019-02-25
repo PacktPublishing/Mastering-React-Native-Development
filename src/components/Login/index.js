@@ -1,5 +1,5 @@
-import actions from './actions'
-import constants from './constants'
+import * as actions from './actions'
+import * as constants from './constants'
 import { Login } from './LoginContainer'
 import reducer from './reducer'
 

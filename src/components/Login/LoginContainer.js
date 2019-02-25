@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions, StackActions } from 'react-navigation'
 
 import * as loginActions from './actions'
 import Login from './Login'
@@ -12,9 +12,16 @@ class LoginContainer extends Component {
     this.state = {}
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.loggingIn && !this.props.loggingIn) {
-      this.props.navigation.reset([NavigationActions.navigate({ routeName: 'Welcome', params: { facebookUser: this.props.facebookUser } })], 0)
+      const resetAction = StackActions.reset({
+        index: 0,
+        key: null,
+        actions: [
+          NavigationActions.navigate({ routeName: 'SignedIn' })
+        ]
+      })
+      this.props.navigation.dispatch(resetAction)
     }
   }
 
