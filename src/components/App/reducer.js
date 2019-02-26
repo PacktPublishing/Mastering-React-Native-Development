@@ -1,5 +1,5 @@
 import * as login from '../Login'
-console.log(login)
+
 const initialState = {
   facebookUser: {},
 }
