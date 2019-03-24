@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import Welcome from './Welcome'
+import * as welcomeActions from './actions'
 import { logoutUser } from '../../utils'
 
 class WelcomeContainer extends Component {
@@ -17,19 +19,26 @@ class WelcomeContainer extends Component {
   render() {
     return (
       <Welcome
-        {...this.props}
+        {...this.props.appState}
+        {...this.props.imageState}
         logout={this.logout}
+        getImages={this.props.welcomeActions.getImages}
       />
     )
   }
 }
 
 const mapStateToProps = state => {
-  return state.App
+  return {
+    appState: state.App,
+    imageState: state.Welcome,
+  }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    welcomeActions: bindActionCreators(welcomeActions, dispatch)
+  }
 }
 
 const ConnectedWelcome = connect(mapStateToProps, mapDispatchToProps)(WelcomeContainer)

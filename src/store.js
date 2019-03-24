@@ -5,10 +5,12 @@ import storage from 'redux-persist/lib/storage'
 
 import { reducer as LoginReducer } from './components/Login'
 import { reducer as AppReducer } from './components/App'
+import { WelcomeReducer } from './components/Welcome'
 
 const rootReducer = combineReducers({
   Login: LoginReducer,
   App: AppReducer,
+  Welcome: WelcomeReducer,
 })
 
 // This just allows for multiple middlewares to be integrated with redux
@@ -19,6 +21,7 @@ const persistConfig = {
   key: 'root',
   storage,
   whitelist: ['App'],
+  blacklist: ['Welcome'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
