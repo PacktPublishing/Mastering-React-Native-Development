@@ -10,7 +10,7 @@ const Welcome = (props) => {
       <Content padder contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Welcome, {props.facebookUser.name}</Text>
       </Content>
-      <Content>
+      <Content contentContainerStyle={{ flex: 2, justifyContent: 'space-around' }}>
       { props.fetchingImages ?
           <ActivityIndicator /> :
           props.imageError ?
