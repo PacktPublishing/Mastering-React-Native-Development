@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'react-native'
+import { Image, Dimensions } from 'react-native'
 import {
   Text,
   Card,
@@ -9,24 +9,31 @@ import {
   Thumbnail,
 } from 'native-base'
 
-const ImageCard = ({ card }) => (
-  <Card>
-    <CardItem>
-      <Left>
-        <Thumbnail source={{ uri: card.userImageURL }} />
-        <Body>
-          <Text>{card.user}</Text>
-        </Body>
-      </Left>
-    </CardItem>
-    <CardItem cardBody>
-      <Image
-        source={{ uri: card.largeImageURL }}
-        // resizeMode="contain"
-        style={{ height: 200, width: null, flex: 1 }}
-      />
-    </CardItem>
-  </Card>
-)
+import ProgressiveImage from './ProgressiveImage'
+
+const ImageCard = ({ card, onCardLayout }) => {
+  const { width } = Dimensions.get('window')
+  const imageHeight = (card.imageHeight / card.imageWidth) * width
+  return (
+    <Card>
+      <CardItem>
+        <Left>
+          <Thumbnail source={{ uri: card.userImageURL }} />
+          <Body>
+            <Text>{card.user}</Text>
+          </Body>
+        </Left>
+      </CardItem>
+      <CardItem cardBody>
+        <ProgressiveImage
+          thumbnailSource={{ uri: card.previewURL }}
+          source={{ uri: card.largeImageURL }}
+          style={{ height: imageHeight, width: null, flex: 1 }}
+          resizeMode="contain"
+        />
+      </CardItem>
+    </Card>
+  )
+}
 
 export default ImageCard

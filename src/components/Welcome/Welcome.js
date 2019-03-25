@@ -1,32 +1,36 @@
 import React from 'react'
-import { ActivityIndicator, Image } from 'react-native'
-import { Container, Content, Text, Button } from 'native-base'
+import { FlatList } from 'react-native'
+import { Container, Content, Text, Body, ListItem } from 'native-base'
+import Loader from '../shared/Loader'
 
 import ImageCard from './ImageCard'
+
+const renderItem = ({ item }) => {
+  return (
+    <ListItem key={item.id.toString()} style={{ borderBottomWidth: 0 }}>
+      <Body>
+        <ImageCard card={item} />
+      </Body>
+    </ListItem>
+  )
+}
 
 const Welcome = (props) => {
   return (
     <Container style={{ flex: 1 }}>
-      <Content padder contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Welcome, {props.facebookUser.name}</Text>
-      </Content>
-      <Content contentContainerStyle={{ flex: 2, justifyContent: 'space-around' }}>
+      <Content>
       { props.fetchingImages ?
-          <ActivityIndicator /> :
+          <Loader /> :
           props.imageError ?
             <Text style={{ alignSelf: 'center' }}>Image Error</Text> :
             props.images.length > 0 ?
-              <ImageCard card={props.images[0]} /> :
-        null
+              <FlatList
+                style={{flex: 1}}
+                data={props.images}
+                renderItem={renderItem}
+              /> :
+              null
       }
-      </Content>
-      <Content padder contentContainerStyle={{ flex: 1, justifyContent: 'space-around' }}>
-        <Button style={{ alignSelf: 'center' }} flex={1} onPress={props.getImages}>
-          <Text>Get Images</Text>
-        </Button>
-        <Button style={{ alignSelf: 'center' }} flex={1} onPress={props.logout}>
-          <Text>Logout</Text>
-        </Button>
       </Content>
     </Container>
   )

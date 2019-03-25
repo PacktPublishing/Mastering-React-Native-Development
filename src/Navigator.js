@@ -10,7 +10,6 @@ const SignedInView = createStackNavigator(
   },
   {
     initialRouteName: "Welcome",
-    headerMode: 'none',
   }
 )
 
@@ -37,7 +36,8 @@ export const createAppNavigator = (signedIn = false) => {
       },
     },
     {
-      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut'
+      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut',
+      headerMode: 'none',
     }
   )
   return createAppContainer(appStackNavigator)
