@@ -4,6 +4,7 @@ const initialState = {
   fetchingImages: false,
   images: [],
   imageError: null,
+  page: 1,
 }
 
 const actionHandlers = {
@@ -17,7 +18,8 @@ const actionHandlers = {
     return {
       ...state,
       fetchingImages: false,
-      images: action.imageObject.hits,
+      images: [...state.images, ...action.imageObject.hits],
+      page: action.page,
       imageError: null,
     }
   },

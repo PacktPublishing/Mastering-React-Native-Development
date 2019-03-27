@@ -21,18 +21,21 @@ class WelcomeContainer extends Component {
     }
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   componentDidMount () {
     this.props.navigation.setParams({ logoutFunction: this.logout })
-    this.props.welcomeActions.getImages()
+    // Always get the first page of images on mount
+    this.props.welcomeActions.getImages(1)
   }
 
   logout = () => {
     logoutUser(this.props.navigation)
+  }
+
+  onEndReached = () => {
+    const { fetchingImages, page } = this.props.imageState
+    if (!fetchingImages) {
+      this.props.welcomeActions.getImages(page + 1)
+    }
   }
 
   render() {
@@ -40,8 +43,8 @@ class WelcomeContainer extends Component {
       <Welcome
         {...this.props.appState}
         {...this.props.imageState}
-        logout={this.logout}
         getImages={this.props.welcomeActions.getImages}
+        onEndReached={this.onEndReached}
       />
     )
   }

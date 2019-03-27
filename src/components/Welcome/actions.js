@@ -7,9 +7,10 @@ const getImagesStart = () => ({
   type: c.GET_IMAGES_START
 })
 
-const getImagesSuccess = (imageObject) => ({
+const getImagesSuccess = (imageObject, page) => ({
   type: c.GET_IMAGES_SUCCESS,
   imageObject,
+  page,
 })
 
 const getImagesError = (error) => ({
@@ -17,12 +18,13 @@ const getImagesError = (error) => ({
   error,
 })
 
-export const getImages = () => async (dispatch) => {
+export const getImages = (page) => async (dispatch) => {
   dispatch(getImagesStart())
   try {
     const params = {
       key: Config.PIXABAY_KEY,
       'image_type': 'photo',
+      page,
     }
     // This query will look like this: key=ABC123&image_type=photo
     const query = `https://pixabay.com/api?${qs.stringify(params)}`
@@ -34,7 +36,7 @@ export const getImages = () => async (dispatch) => {
     // This line of code allows you to not hit the API on every load.
     // const imageObject = preLoadedImageResponse
     
-    dispatch(getImagesSuccess(imageObject))
+    dispatch(getImagesSuccess(imageObject, page))
 
   } catch (error) {
     dispatch(getImagesError(error))
