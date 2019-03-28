@@ -40,7 +40,7 @@ const TabNavigator = createBottomTabNavigator({
   Account: AccountStack
 },
 {
-  initialRouteName: 'Account',
+  initialRouteName: 'Feed',
   tabBarOptions: {
     activeTintColor: "#F49B42",
     inactiveTintColor: "#858585",
