@@ -1,42 +1,54 @@
-import React from 'react'
-import { FlatList } from 'react-native'
-import { Container, Text, Body, ListItem } from 'native-base'
-import Loader from '../shared/Loader'
+import { createBottomTabNavigator, createStackNavigator, Header } from 'react-navigation'
 
-import ImageCard from './ImageCard'
+import { AccountScreen } from './Account'
+import { CardFeed } from './CardFeed'
 
-const renderItem = ({ item }) => {
-  return (
-    <ListItem style={{ borderBottomWidth: 0 }}>
-      <Body>
-        <ImageCard card={item} />
-      </Body>
-    </ListItem>
-  )
-}
-
-const _keyExtractor = (item) => item.id.toString()
-
-const Welcome = (props) => {
-  return (
-    <Container style={{ flex: 1 }}>
-      {props.fetchingImages && props.images.length <= 0 ?
-        <Loader /> :
-        props.imageError ?
-          <Text style={{ alignSelf: 'center' }}>Image Error</Text> :
-          props.images.length > 0 ?
-            <FlatList
-              keyExtractor={_keyExtractor}
-              style={{flex: 1}}
-              data={props.images}
-              renderItem={renderItem}
-              onEndReached={props.onEndReached}
-              onEndReachedThreshold={5}
-            /> :
-            null
+const FeedStack = createStackNavigator(
+  {
+    CardFeed: {
+      screen: CardFeed,
+      navigationOptions: {
+        headerTitle: "News Feed"
       }
-    </Container>
-  )
-}
+    },
+  },
+  {
+    navigationOptions: {
+      header: props => <Header {...props} />,
+    }
+  }
+)
 
-export default Welcome
+const AccountStack = createStackNavigator(
+  {
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: {
+        headerTitle: "My Account"
+      }
+    },
+  },
+  {
+    navigationOptions: {
+      header: props => <Header {...props} />,
+    }
+  }
+)
+
+const TabNavigator = createBottomTabNavigator({
+  Feed: FeedStack,
+  Account: AccountStack
+},
+{
+  initialRouteName: 'Account',
+  tabBarOptions: {
+    activeTintColor: "#F49B42",
+    inactiveTintColor: "#858585",
+    labelStyle: {
+      fontSize: 20,
+      lineHeight: 24,
+    }
+  }
+})
+
+export default TabNavigator

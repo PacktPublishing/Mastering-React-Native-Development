@@ -1,4 +1,4 @@
-import { createStackNavigator, createAppContainer } from "react-navigation"
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 import { Login, Welcome } from './components'
 
@@ -10,6 +10,7 @@ const SignedInView = createStackNavigator(
   },
   {
     initialRouteName: "Welcome",
+    headerMode: 'none',
   }
 )
 

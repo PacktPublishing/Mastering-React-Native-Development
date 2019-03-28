@@ -62,7 +62,7 @@ export const loginWithFacebook = () => async (dispatch) => {
       
       // Using the access token, retreive the user's name and picture
       const facebookResponse = await fetch(
-        `https://graph.facebook.com/v2.5/me?fields=name,picture&access_token=${fbAccessTokenData.accessToken.toString()}`,
+        `https://graph.facebook.com/v2.5/me?fields=name,picture.type(large)&access_token=${fbAccessTokenData.accessToken.toString()}`,
         { headers: { 'Content-Type': 'application/json' } }
       )
 

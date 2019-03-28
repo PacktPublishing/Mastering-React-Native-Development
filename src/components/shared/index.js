@@ -1,4 +1,4 @@
 import EmailTextInput from './EmailTextInput'
 import Loader from './Loader'
 
-export default { Loader, EmailTextInput }
+export { Loader, EmailTextInput }

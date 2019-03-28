@@ -1,4 +1,3 @@
-import { Welcome } from './WelcomeContainer'
-import WelcomeReducer from './reducer'
+import Welcome from './Welcome'
 
-export { Welcome, WelcomeReducer }
+export { Welcome }
