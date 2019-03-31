@@ -2,7 +2,9 @@ import * as c from './constants'
 import Config from 'react-native-config'
 import qs from 'qs'
 import { normalize, schema } from 'normalizr'
+
 import preLoadedImageResponse from './response'
+import jResponse from './response-jeopardy'
 
 const getImagesStart = () => ({
   type: c.GET_IMAGES_START
@@ -75,5 +77,51 @@ export const getImages = (page) => async (dispatch) => {
   } catch (error) {
     dispatch(getImagesError(error))
     console.error(error)
+  }
+}
+
+export const normalizeJQuestions = () => {
+  /*
+  A single Jeopardy respons from http://jservice.io/api/random?count=20 looks like this:
+  [
+    {
+      "id": 33893,
+      "answer": "Mekong",
+      "question": "2 deltas that saw a lot of action were the Red & this river, originating in Tibet & emptying in the S. China Sea",
+      "value": 400,
+      "airdate": "1998-10-01T12:00:00.000Z",
+      "created_at": "2014-02-11T23:05:55.618Z",
+      "updated_at": "2014-02-11T23:05:55.618Z",
+      "category_id": 3968,
+      "game_id": null,
+      "invalid_count": null,
+      "category": {
+          "id": 3968,
+          "title": "the vietnam war",
+          "created_at": "2014-02-11T23:05:55.198Z",
+          "updated_at": "2014-02-11T23:05:55.198Z",
+          "clues_count": 16
+      }
+    }
+  ]
+  */
+
+  // Start with the embedded category object
+  const categorySchema = new schema.Entity('categories')
+  // Create the entire question object schema
+  const questionSchema = new schema.Entity('questions', {
+    category: categorySchema
+  })
+  // Since the response isn't a single object, and is an array instead, use the array shorthand to create an array schema.
+  const questionsArraySchema = [ questionSchema ]
+
+  // Normalize the Jeopardy question data
+  const jNormalizedData = normalize(jResponse, questionsArraySchema)
+  console.log(jNormalizedData)
+  return {
+    type: 'JEOPARDY_RESPONSE',
+    categories: jNormalizedData.entities.categories,
+    questions: jNormalizedData.entities.questions,
+    questionsArray: jNormalizedData.result,
   }
 }

@@ -6,6 +6,9 @@ const initialState = {
   imageIds: [],
   imageError: null,
   page: 1,
+  categories: {},
+  questions: {},
+  questionsArray: [],
 }
 
 const actionHandlers = {
@@ -30,6 +33,14 @@ const actionHandlers = {
       ...state,
       fetchingImages: false,
       imageError: action.error,
+    }
+  },
+  'JEOPARDY_RESPONSE': (state, action) =>{
+    return {
+      ...state,
+      categories: Object.assign(state.categories, action.categories),
+      questions: Object.assign(state.questions, action.questions),
+      questionsArray: [...state.questionsArray, ...action.questionsArray],
     }
   }
 }

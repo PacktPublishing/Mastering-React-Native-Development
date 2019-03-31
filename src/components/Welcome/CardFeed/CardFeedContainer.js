@@ -12,6 +12,7 @@ class CardFeedContainer extends Component {
     this.props.navigation.setParams({ logoutFunction: this.logout })
     // Always get the first page of images on mount
     this.props.cardFeedActions.getImages(1)
+    this.props.cardFeedActions.normalizeJQuestions()
   }
 
   logout = () => {
