@@ -1,6 +1,7 @@
 import * as c from './constants'
 import Config from 'react-native-config'
 import qs from 'qs'
+import { normalize, schema } from 'normalizr'
 import preLoadedImageResponse from './response'
 
 const getImagesStart = () => ({
@@ -33,12 +34,20 @@ export const getImages = (page) => async (dispatch) => {
     // convert the response to a JSON object
     const imageObject = await imageResponse.json()
 
+    const image = new schema.Entity('images', {}, {
+      idAttribute: 'id' // By default, the idAttirbute is id
+    })
+    const imageListSchema = [ image ] // Shorthand for new schema.Array(image)
+
     // This line of code allows you to not hit the API on every load.
     // const imageObject = preLoadedImageResponse
     
-    dispatch(getImagesSuccess(imageObject, page))
+    const normalizedImages = normalize(imageObject.hits, imageListSchema)
+
+    dispatch(getImagesSuccess(normalizedImages, page))
 
   } catch (error) {
     dispatch(getImagesError(error))
+    console.error(error)
   }
 }

@@ -2,7 +2,8 @@ import * as c from './constants'
 
 const initialState = {
   fetchingImages: false,
-  images: [],
+  imageObjects: {},
+  imageIds: [],
   imageError: null,
   page: 1,
 }
@@ -18,7 +19,8 @@ const actionHandlers = {
     return {
       ...state,
       fetchingImages: false,
-      images: [...state.images, ...action.imageObject.hits],
+      imageObjects: { ...state.imageObjects, ...action.imageObject.entities.images },
+      imageIds: [...state.imageIds, ...action.imageObject.result],
       page: action.page,
       imageError: null,
     }

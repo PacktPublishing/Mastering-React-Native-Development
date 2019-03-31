@@ -5,38 +5,43 @@ import Loader from '../../shared/Loader'
 
 import ImageCard from './ImageCard'
 
-const renderItem = ({ item }) => {
-  return (
-    <ListItem style={{ borderBottomWidth: 0 }}>
-      <Body>
-        <ImageCard card={item} />
-      </Body>
-    </ListItem>
-  )
-}
+const _keyExtractor = (item) => item.toString()
 
-const _keyExtractor = (item) => item.id.toString()
+class CardFeed extends React.PureComponent {
+  renderItem = ({ item }) => {
+    const { imageObjects } = this.props
+    return (
+      <ListItem style={{ borderBottomWidth: 0 }}>
+        <Body>
+          <ImageCard card={imageObjects[item]} />
+        </Body>
+      </ListItem>
+    )
+  }
 
-const CardFeed = (props) => {
-  return (
-    <Container style={{ flex: 1 }}>
-      {props.fetchingImages && props.images.length <= 0 ?
-        <Loader /> :
-        props.imageError ?
-          <Text style={{ alignSelf: 'center' }}>Image Error</Text> :
-          props.images.length > 0 ?
-            <FlatList
-              keyExtractor={_keyExtractor}
-              style={{flex: 1}}
-              data={props.images}
-              renderItem={renderItem}
-              onEndReached={props.onEndReached}
-              onEndReachedThreshold={5}
-            /> :
-            null
-      }
-    </Container>
-  )
+  
+  render () {
+    const { fetchingImages, imageIds, imageError, onEndReached } = this.props
+    return (
+      <Container style={{ flex: 1 }}>
+        {fetchingImages && imageIds.length <= 0 ?
+          <Loader /> :
+          imageError ?
+            <Text style={{ alignSelf: 'center' }}>Image Error</Text> :
+            imageIds.length > 0 ?
+              <FlatList
+                keyExtractor={_keyExtractor}
+                style={{ flex: 1 }}
+                data={imageIds}
+                renderItem={this.renderItem}
+                onEndReached={onEndReached}
+                onEndReachedThreshold={5}
+              /> :
+              null
+        }
+      </Container>
+    )
+  }
 }
 
 export default CardFeed
