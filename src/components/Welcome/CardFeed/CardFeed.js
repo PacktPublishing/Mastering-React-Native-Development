@@ -7,7 +7,7 @@ import ImageCard from './ImageCard'
 
 const _keyExtractor = (item) => item.toString()
 
-class CardFeed extends React.PureComponent {
+class CardFeed extends React.Component {
   renderItem = ({ item }) => {
     const { imageObjects } = this.props
     return (
