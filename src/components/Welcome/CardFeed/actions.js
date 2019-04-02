@@ -34,16 +34,42 @@ export const getImages = (page) => async (dispatch) => {
     // convert the response to a JSON object
     const imageObject = await imageResponse.json()
 
+    /*
+    [
+      ...,
+      {
+        ...
+        "likes":64,
+        "id":4087361,
+        "user_id":3764790,
+        ...
+      },
+      {
+        ...
+        "likes":46,
+        "id":4087360,
+        "user_id":3764790,
+        ...
+      },
+      ...,
+    ]
+    */
+
     const image = new schema.Entity('images', {}, {
       idAttribute: 'id' // By default, the idAttirbute is id
     })
+    /*
+      const image = new schema.Entity('images')
+    */
     const imageListSchema = [ image ] // Shorthand for new schema.Array(image)
 
     // This line of code allows you to not hit the API on every load.
     // const imageObject = preLoadedImageResponse
     
     const normalizedImages = normalize(imageObject.hits, imageListSchema)
-
+    
+    console.log('normalizedImages', normalizedImages)
+    
     dispatch(getImagesSuccess(normalizedImages, page))
 
   } catch (error) {
