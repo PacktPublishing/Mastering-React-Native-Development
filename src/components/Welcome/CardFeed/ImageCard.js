@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Dimensions } from 'react-native'
+import { Dimensions } from 'react-native'
 import {
   Text,
   Card,
@@ -7,11 +7,13 @@ import {
   Left,
   Body,
   Thumbnail,
+  Button,
+  Icon,
 } from 'native-base'
 
 import ProgressiveImage from './ProgressiveImage'
 
-const ImageCard = ({ card, onCardLayout }) => {
+const ImageCard = ({ card }) => {
   const { width } = Dimensions.get('window')
   const imageHeight = (card.imageHeight / card.imageWidth) * width
   return (
@@ -31,6 +33,14 @@ const ImageCard = ({ card, onCardLayout }) => {
           style={{ height: imageHeight, width: null, flex: 1 }}
           resizeMode="contain"
         />
+      </CardItem>
+      <CardItem>
+        <Left>
+          <Button transparent>
+            <Icon name="thumbs-up" />
+            <Text>{card.likes.toString()} Likes</Text>
+          </Button>
+        </Left>
       </CardItem>
     </Card>
   )

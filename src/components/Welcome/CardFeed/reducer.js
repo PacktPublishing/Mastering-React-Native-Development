@@ -6,6 +6,7 @@ const initialState = {
   imageIds: [],
   imageError: null,
   page: 1,
+  cardLikeToggleValue: false,
 }
 
 const actionHandlers = {
@@ -31,7 +32,11 @@ const actionHandlers = {
       fetchingImages: false,
       imageError: action.error,
     }
-  }
+  },
+  [c.ON_CARD_LIKE_TOGGLE]: (state, action) => ({
+    ...state,
+    cardLikeToggleValue: action.cardLikeToggleValue,
+  })
 }
 
 export default (state = initialState, action) => {

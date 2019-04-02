@@ -77,3 +77,8 @@ export const getImages = (page) => async (dispatch) => {
     console.error(error)
   }
 }
+
+export const onCardLikeToggle = (cardLikeToggleValue) => ({
+  type: c.ON_CARD_LIKE_TOGGLE,
+  cardLikeToggleValue,
+})

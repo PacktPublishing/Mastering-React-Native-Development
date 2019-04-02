@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Text, Button } from 'native-base'
 
 import CardFeed from './CardFeed'
 import * as cardFeedActions from './actions'
 import { logoutUser } from '../../../utils'
+import { getVisibleImages } from './selectors'
 
 class CardFeedContainer extends Component {
   componentDidMount () {
@@ -32,6 +32,7 @@ class CardFeedContainer extends Component {
         {...this.props.imageState}
         getImages={this.props.cardFeedActions.getImages}
         onEndReached={this.onEndReached}
+        onCardLikeToggle={this.props.cardFeedActions.onCardLikeToggle}
       />
     )
   }
@@ -40,7 +41,14 @@ class CardFeedContainer extends Component {
 const mapStateToProps = state => {
   return {
     appState: state.App,
-    imageState: state.CardFeed,
+    imageState: {
+      imageObjects: state.CardFeed.imageObjects,
+      fetchingImages: state.CardFeed.fetchingImages,
+      imageError: state.CardFeed.imageError,
+      cardLikeToggleValue: state.CardFeed.cardLikeToggleValue,
+      page: state.CardFeed.page,
+      imageIds: getVisibleImages(state),
+    },
   }
 }
 
