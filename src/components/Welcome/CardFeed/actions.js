@@ -67,9 +67,7 @@ export const getImages = (page) => async (dispatch) => {
     // const imageObject = preLoadedImageResponse
     
     const normalizedImages = normalize(imageObject.hits, imageListSchema)
-    
-    console.log('normalizedImages', normalizedImages)
-    
+        
     dispatch(getImagesSuccess(normalizedImages, page))
 
   } catch (error) {
