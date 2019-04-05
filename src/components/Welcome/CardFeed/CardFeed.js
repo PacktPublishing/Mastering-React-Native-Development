@@ -4,10 +4,11 @@ import { Container, Text, Body, ListItem, Switch, Content } from 'native-base'
 import Loader from '../../shared/Loader'
 
 import ImageCard from './ImageCard'
+import shallowEqual from 'react-redux/lib/utils/shallowEqual' 
 
 const _keyExtractor = (item) => item.toString()
 
-class CardFeed extends React.Component {
+class CardFeed extends React.PureComponent {
   renderItem = ({ item }) => {
     const { imageObjects } = this.props
     return (
