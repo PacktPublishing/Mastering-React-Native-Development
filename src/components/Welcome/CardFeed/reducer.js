@@ -1,4 +1,5 @@
 import * as c from './constants'
+import produce from 'immer'
 
 const initialState = {
   fetchingImages: false,
@@ -10,38 +11,30 @@ const initialState = {
 }
 
 const actionHandlers = {
-  [c.GET_IMAGES_START]: (state, action) => {
-    return {
-      ...state,
-      fetchingImages: true,
-    }
+  [c.GET_IMAGES_START]: (draft, action) => {
+    draft.fetchingImages = true
   },
-  [c.GET_IMAGES_SUCCESS]: (state, action) => {
-    return {
-      ...state,
-      fetchingImages: false,
-      imageObjects: { ...state.imageObjects, ...action.imageObject.entities.images },
-      imageIds: [...state.imageIds, ...action.imageObject.result],
-      page: action.page,
-      imageError: null,
-    }
+  [c.GET_IMAGES_SUCCESS]: (draft, action) => {
+    draft.fetchingImages = false
+    draft.imageObjects = { ...state.imageObjects, ...action.imageObject.entities.images }
+    draft.imageIds = [...state.imageIds, ...action.imageObject.result]
+    draft.page = action.page
+    draft.imageError = null
   },
-  [c.GET_IMAGES_ERROR]: (state, action) => {
-    return {
-      ...state,
-      fetchingImages: false,
-      imageError: action.error,
-    }
+  [c.GET_IMAGES_ERROR]: (draft, action) => {
+    draft.fetchingImages = false
+    draft.imageError = action.error
   },
-  [c.ON_CARD_LIKE_TOGGLE]: (state, action) => ({
-    ...state,
-    cardLikeToggleValue: action.cardLikeToggleValue,
-  })
+  [c.ON_CARD_LIKE_TOGGLE]: (draft, action) => {
+    draft.cardLikeToggleValue = action.cardLikeToggleValue
+  }
 }
 
 export default (state = initialState, action) => {
   if (actionHandlers[action.type]) {
-    return actionHandlers[action.type](state, action)
+    return produce(state, draft => {
+      actionHandlers[action.type](draft, action)
+    })
   }
   return state
 }

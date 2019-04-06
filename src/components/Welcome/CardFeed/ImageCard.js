@@ -17,6 +17,7 @@ const { width } = Dimensions.get('window')
 
 class ImageCard extends React.PureComponent {
   render() {
+    const { card } = this.props
     const imageHeight = (card.imageHeight / card.imageWidth) * width
     return (
       <Card>
