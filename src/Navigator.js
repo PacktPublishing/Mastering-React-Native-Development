@@ -1,15 +1,18 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
-import { Login, Welcome } from './components'
+import { Login, Welcome, SwipeDeck } from './components'
 
 const SignedInView = createStackNavigator(
   {
     Welcome: {
       screen: Welcome
     },
+    SwipeDeck: {
+      screen: SwipeDeck
+    }
   },
   {
-    initialRouteName: "Welcome",
+    initialRouteName: "SwipeDeck",
     headerMode: 'none',
   }
 )
