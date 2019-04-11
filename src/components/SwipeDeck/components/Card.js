@@ -19,8 +19,8 @@ export default class Card extends React.PureComponent {
           }
         ]}
       >
-        { showLeftSwipeText && <Icon style={leftIconStyle} name="thumbs-up" /> }
-        { showRightSwipeText && <Icon style={rightIconStyle} name="thumbs-down" /> }
+        { showLeftSwipeText && <Icon style={leftIconStyle} name="thumbs-down" /> }
+        { showRightSwipeText && <Icon style={rightIconStyle} name="thumbs-up" /> }
       </Animated.View>
     )
   }
