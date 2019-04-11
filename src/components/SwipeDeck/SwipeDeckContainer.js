@@ -25,6 +25,7 @@ class SwipeDeckContainer extends Component {
         onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
         // does this view want to "claim" touch responsiveness?
         onMoveShouldSetPanResponder: (evt, gestureState) => {
+          console.log(gestureState.moveX)
           this.cardMoveFingerX = gestureState.moveX
           return true
         },
@@ -50,6 +51,8 @@ class SwipeDeckContainer extends Component {
     // When the change in x is negative and less than the negative value of halfway between your finger and the edge of the screen, show label
     } else if (gestureState.dx < 0 && gestureState.dx < leftValue) {
       this.setState({ showLeftSwipeText: true, showRightSwipeText: false })
+    } else {
+      this.setState({ showLeftSwipeText: false, showRightSwipeText: false })
     }
   }
 
