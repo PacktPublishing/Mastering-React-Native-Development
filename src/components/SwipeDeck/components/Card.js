@@ -2,9 +2,11 @@ import React from 'react'
 import { Animated } from 'react-native'
 import { Icon } from 'native-base'
 
+const AnimatedIcon = Animated.createAnimatedComponent(Icon)
+
 export default class Card extends React.PureComponent {
   render() {
-    const { panResponder, cardRotationValue, xValue, cardStyle, cardOpacity, leftIconStyle, rightIconStyle, showLeftSwipeText, showRightSwipeText } = this.props
+    const { panResponder, cardRotationValue, xValue, cardStyle, cardOpacity, leftIconStyle, rightIconStyle, showLeftSwipeText, showRightSwipeText, rightOpacityValue, leftOpacityValue } = this.props
     return (
       <Animated.View
         {...panResponder.panHandlers}
@@ -19,8 +21,8 @@ export default class Card extends React.PureComponent {
           }
         ]}
       >
-        { showLeftSwipeText && <Icon style={leftIconStyle} name="thumbs-down" /> }
-        { showRightSwipeText && <Icon style={rightIconStyle} name="thumbs-up" /> }
+        {showLeftSwipeText && <AnimatedIcon style={[leftIconStyle, { opacity: leftOpacityValue }]} name="thumbs-down" /> }
+        {showRightSwipeText && <AnimatedIcon style={[rightIconStyle, { opacity: rightOpacityValue }]} name="thumbs-up" /> }
       </Animated.View>
     )
   }

@@ -25,7 +25,6 @@ class SwipeDeckContainer extends Component {
         onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
         // does this view want to "claim" touch responsiveness?
         onMoveShouldSetPanResponder: (evt, gestureState) => {
-          console.log(gestureState.moveX)
           this.cardMoveFingerX = gestureState.moveX
           return true
         },
@@ -111,6 +110,18 @@ class SwipeDeckContainer extends Component {
         outputRange: ['-20deg', '0deg', '20deg'],
       }
     )
+    const leftOpacityValue = this.xValue.interpolate(
+      {
+        inputRange: [-((3 * this.cardMoveFingerX) / 4), -(this.cardMoveFingerX / 2)],
+        outputRange: [1, 0]
+      }
+    )
+    const rightOpacityValue = this.xValue.interpolate(
+      {
+        inputRange: [(DEVICE_WIDTH - this.cardMoveFingerX) / 2, (3 * (DEVICE_WIDTH - this.cardMoveFingerX)) / 4],
+        outputRange: [0, 1]
+      }
+    )
     return (
       <SwipeDeck
         {...this.state}
@@ -120,6 +131,8 @@ class SwipeDeckContainer extends Component {
         cardRotationValue={cardRotationValue}
         xValue={this.xValue}
         cardOpacity={this.cardOpacity}
+        leftOpacityValue={leftOpacityValue}
+        rightOpacityValue={rightOpacityValue}
       />
     )
   }
