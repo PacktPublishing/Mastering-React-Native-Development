@@ -14,7 +14,7 @@ const actionHandlers = {
   [c.GET_IMAGES_START]: (draft, action) => {
     draft.fetchingImages = true
   },
-  [c.GET_IMAGES_SUCCESS]: (draft, action) => {
+  [c.GET_IMAGES_SUCCESS]: (draft, action, state) => {
     draft.fetchingImages = false
     draft.imageObjects = { ...state.imageObjects, ...action.imageObject.entities.images }
     draft.imageIds = [...state.imageIds, ...action.imageObject.result]
@@ -33,7 +33,7 @@ const actionHandlers = {
 export default (state = initialState, action) => {
   if (actionHandlers[action.type]) {
     return produce(state, draft => {
-      actionHandlers[action.type](draft, action)
+      actionHandlers[action.type](draft, action, state)
     })
   }
   return state

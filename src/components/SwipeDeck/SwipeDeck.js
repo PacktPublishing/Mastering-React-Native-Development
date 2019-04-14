@@ -11,9 +11,12 @@ class SwipeDeck extends React.PureComponent {
           <DirectionButton onPressFunc={this.props.onLeftButtonClicked} text="<" />
         </View>
         <View style={styles.cardContainer}>
-          <Card
-            {...this.props}
-          />
+          { this.props.cardIds.length > 0 && 
+            <Card
+              {...this.props}
+              card={this.props.imageObjects[this.props.cardIds[0]]}
+            />
+          }
         </View>
         <View style={styles.buttonContainer}>
           <DirectionButton onPressFunc={this.props.onRightButtonClicked} text=">" />
@@ -39,31 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  card: {
-    width: '95%',
-    height: '60%',
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    backgroundColor:'#cc5500',
-  },
-  leftIcon: {
-    position: 'absolute',
-    top: 20,
-    right: 30,
-    color: 'white',
-    fontSize: 30,
-    backgroundColor: 'transparent'
-  },
-  rightIcon: {
-    position: 'absolute',
-    top: 20,
-    left: 30,
-    color: 'white',
-    fontSize: 30,
-    backgroundColor: 'transparent'
   },
 })
 

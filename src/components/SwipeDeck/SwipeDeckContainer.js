@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Animated, Dimensions, PanResponder } from 'react-native'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import SwipeDeck from './SwipeDeck'
+import { selectors , actions } from '../Welcome/CardFeed'
 
 const DEVICE_WIDTH = Dimensions.get('window').width
 class SwipeDeckContainer extends Component {
@@ -15,6 +18,7 @@ class SwipeDeckContainer extends Component {
     this.state = {
       showRightSwipeIcon: false,
       showLeftSwipeIcon: false,
+      cardIds: [],
     }
 
     this._panResponder = PanResponder.create(
@@ -35,6 +39,16 @@ class SwipeDeckContainer extends Component {
         // Fired at the end of the touch, ie "touchUp"
         onPanResponderRelease: this.onPanResponderRelease,
       })
+  }
+
+  componentDidMount () {
+    this.props.cardFeedActions.getImages(1)
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.imageIds.length !== prevProps.imageIds.length) {
+      this.setState({ cardIds: this.props.imageIds })
+    }
   }
   
   onPanResponderMove = (evt, gestureState) => {
@@ -135,9 +149,26 @@ class SwipeDeckContainer extends Component {
         cardOpacity={this.cardOpacity}
         leftOpacityValue={leftOpacityValue}
         rightOpacityValue={rightOpacityValue}
+        imageObjects={this.props.imageObjects}
       />
     )
   }
 }
 
-export { SwipeDeckContainer as SwipeDeck }
+const mapStateToProps = state => {
+  return {
+    appState: state.App,
+    imageObjects: state.CardFeed.imageObjects,
+    imageIds: selectors.getVisibleImages(state),
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    cardFeedActions: bindActionCreators(actions, dispatch)
+  }
+}
+
+const ConnectedSwipeDeckContainer = connect(mapStateToProps, mapDispatchToProps)(SwipeDeckContainer)
+
+export { ConnectedSwipeDeckContainer as SwipeDeck }

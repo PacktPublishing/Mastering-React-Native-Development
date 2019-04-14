@@ -1,13 +1,15 @@
 import React from 'react'
-import { Animated } from 'react-native'
+import { Animated, StyleSheet, Image, Dimensions } from 'react-native'
 import { Icon } from 'native-base'
 
-const AnimatedIcon = Animated.createAnimatedComponent(Icon)
+import { ProgressiveImage } from '../../Welcome/CardFeed'
 
+const AnimatedIcon = Animated.createAnimatedComponent(Icon)
+const VIEW_WIDTH = (Dimensions.get('window').width) * (0.6) * (0.95)
 export default class Card extends React.PureComponent {
   render() {
-    const { panResponder, cardRotationValue, xValue, cardOpacity, showLeftSwipeIcon, showRightSwipeIcon, rightOpacityValue, leftOpacityValue } = this.props
-    
+    const { card, panResponder, cardRotationValue, xValue, cardOpacity, showLeftSwipeIcon, showRightSwipeIcon, rightOpacityValue, leftOpacityValue } = this.props
+    const imageHeight = (card.imageHeight / card.imageWidth) * VIEW_WIDTH
     return (
       <Animated.View
         {...panResponder.panHandlers}
@@ -25,6 +27,11 @@ export default class Card extends React.PureComponent {
         {showLeftSwipeIcon && <AnimatedIcon style={[styles.leftIcon, { opacity: leftOpacityValue }]} name="thumbs-down" /> }
         {showRightSwipeIcon && <AnimatedIcon style={[styles.rightIcon, { opacity: rightOpacityValue }]} name="thumbs-up" /> }
         
+        <Image
+          source={{ uri: card.largeImageURL }}
+          style={{ height: imageHeight, width: VIEW_WIDTH, flex: 1 }}
+          resizeMode="contain"
+        />
       </Animated.View>
     )
   }
