@@ -13,8 +13,8 @@ class SwipeDeckContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showRightSwipeText: false,
-      showLeftSwipeText: false,
+      showRightSwipeIcon: false,
+      showLeftSwipeIcon: false,
     }
 
     this._panResponder = PanResponder.create(
@@ -46,12 +46,12 @@ class SwipeDeckContainer extends Component {
     this.xValue.setValue(gestureState.dx)
     // When the change in x is positive and larger than halfway between your finger and the edge of the screen, show label
     if (gestureState.dx > 0 && gestureState.dx > rightValue) {
-      this.setState({ showRightSwipeText: true, showLeftSwipeText: false })
+      this.setState({ showRightSwipeIcon: true, showLeftSwipeIcon: false })
     // When the change in x is negative and less than the negative value of halfway between your finger and the edge of the screen, show label
     } else if (gestureState.dx < 0 && gestureState.dx < leftValue) {
-      this.setState({ showLeftSwipeText: true, showRightSwipeText: false })
+      this.setState({ showLeftSwipeIcon: true, showRightSwipeIcon: false })
     } else {
-      this.setState({ showLeftSwipeText: false, showRightSwipeText: false })
+      this.setState({ showLeftSwipeIcon: false, showRightSwipeIcon: false })
     }
   }
 
@@ -62,7 +62,7 @@ class SwipeDeckContainer extends Component {
     const rightValue = (3 * (DEVICE_WIDTH - this.cardMoveFingerX)) / 4
     // If the user doesn't swipe far enough left or right set the card back to the middle
     if (gestureState.dx < rightValue && gestureState.dx > leftValue ) {
-      this.setState({ showLeftSwipeText: false, showRightSwipeText: false })
+      this.setState({ showLeftSwipeIcon: false, showRightSwipeIcon: false })
       Animated.spring(this.xValue,
         {
           toValue: 0,
@@ -96,10 +96,12 @@ class SwipeDeckContainer extends Component {
   }
 
   onRightButtonClicked = () => {
+    this.setState({ showRightSwipeIcon: true })
     this.swipeCards(1)
   }
 
   onLeftButtonClicked = () => {
+    this.setState({ showLeftSwipeIcon: true })
     this.swipeCards(-1)
   }
   
