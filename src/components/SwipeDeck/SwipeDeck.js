@@ -11,7 +11,9 @@ class SwipeDeck extends React.PureComponent {
           <DirectionButton onPressFunc={this.props.onLeftButtonClicked} text="<" />
         </View>
         <View style={styles.cardContainer}>
-          <Card {...this.props} cardStyle={styles.card} leftIconStyle={styles.leftIcon} rightIconStyle={styles.rightIcon} />
+          <Card
+            {...this.props}
+          />
         </View>
         <View style={styles.buttonContainer}>
           <DirectionButton onPressFunc={this.props.onRightButtonClicked} text=">" />
