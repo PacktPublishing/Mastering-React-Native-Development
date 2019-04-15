@@ -5,7 +5,7 @@ import { Icon } from 'native-base'
 import { ProgressiveImage } from '../../Welcome/CardFeed'
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon)
-const VIEW_WIDTH = (Dimensions.get('window').width) * (0.6) * (0.95)
+const VIEW_WIDTH = (Dimensions.get('window').width) * (0.6) * (0.9)
 export default class Card extends React.PureComponent {
   render() {
     const { card, panResponder, cardRotationValue, xValue, cardOpacity, showLeftSwipeIcon, showRightSwipeIcon, rightOpacityValue, leftOpacityValue } = this.props
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
-    backgroundColor: '#cc5500',
+    borderColor: '#777777',
+    borderWidth: 1,
   },
   leftIcon: {
     position: 'absolute',
