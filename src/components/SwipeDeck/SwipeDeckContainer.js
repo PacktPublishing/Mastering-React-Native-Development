@@ -19,7 +19,6 @@ class SwipeDeckContainer extends Component {
     this.state = {
       showRightSwipeIcon: false,
       showLeftSwipeIcon: false,
-      cardIds: [],
     }
 
     this._panResponder = PanResponder.create(
@@ -44,12 +43,6 @@ class SwipeDeckContainer extends Component {
 
   componentDidMount () {
     this.props.cardFeedActions.getImages(1)
-  }
-
-  componentDidUpdate (prevProps) {
-    if (this.props.imageIds.length !== prevProps.imageIds.length) {
-      this.setState({ cardIds: this.props.imageIds })
-    }
   }
   
   onPanResponderMove = (evt, gestureState) => {
@@ -149,6 +142,7 @@ class SwipeDeckContainer extends Component {
     return (
       <SwipeDeck
         {...this.state}
+        cardIds={this.props.imageIds}
         panResponder={this._panResponder}
         onLeftButtonClicked={this.onLeftButtonClicked}
         onRightButtonClicked={this.onRightButtonClicked}
