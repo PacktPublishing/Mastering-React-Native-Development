@@ -10,6 +10,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width
 class SwipeDeckContainer extends Component {
   xValue = new Animated.Value(0)
   cardOpacity = new Animated.Value(1)
+  imageOpacity = new Animated.Value(0)
   // This is the value of where your finger/cursor starts moving the card
   cardMoveFingerX = 0
 
@@ -118,6 +119,13 @@ class SwipeDeckContainer extends Component {
     this.setState({ showLeftSwipeIcon: true })
     this.swipeCards(-1)
   }
+
+  onImageLoad = () => {
+    Animated.timing(this.imageOpacity, {
+      toValue: 1,
+      duration: 2000,
+    }).start()
+  }
   
   render() {
     const cardRotationValue = this.xValue.interpolate(
@@ -150,6 +158,8 @@ class SwipeDeckContainer extends Component {
         leftOpacityValue={leftOpacityValue}
         rightOpacityValue={rightOpacityValue}
         imageObjects={this.props.imageObjects}
+        imageOpacity={this.imageOpacity}
+        onImageLoad={this.onImageLoad}
       />
     )
   }
