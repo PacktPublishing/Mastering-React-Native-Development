@@ -19,20 +19,24 @@ const getImagesError = (error) => ({
   error,
 })
 
-export const getImages = (page) => async (dispatch) => {
+export const getImages = (page, orientation = 'all') => async (dispatch) => {
   dispatch(getImagesStart())
   try {
     const params = {
       key: Config.PIXABAY_KEY,
       'image_type': 'photo',
       page,
+      orientation,
     }
     // This query will look like this: key=ABC123&image_type=photo
     const query = `https://pixabay.com/api?${qs.stringify(params)}`
     // Get the images from the pixabay server
     const imageResponse = await fetch(query)
+
     // convert the response to a JSON object
     const imageObject = await imageResponse.json()
+
+    // const imageObject = preLoadedImageResponse
 
     /*
     [
