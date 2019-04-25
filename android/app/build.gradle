@@ -135,6 +135,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-firebase')
     implementation project(':react-native-config')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-keychain')
@@ -144,6 +145,10 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation project(':react-native-fbsdk')
+    implementation "com.google.android.gms:play-services-base:16.1.0"
+    implementation "com.google.firebase:firebase-core:16.0.8"
+    implementation 'me.leolin:ShortcutBadger:1.1.21@aar'
+    implementation "com.google.firebase:firebase-messaging:17.5.0"
 }
 
 // Run this once to be able to run the application with BUCK
@@ -152,3 +157,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
