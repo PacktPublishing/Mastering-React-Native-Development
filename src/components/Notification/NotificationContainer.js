@@ -12,22 +12,35 @@ class NotificationContainer extends Component {
   async componentDidMount () {
     const fcmToken = await firebase.messaging().getToken()
     if (fcmToken) {
-      const enabled = await firebase.messaging().hasPermission();
+      const enabled = await firebase.messaging().hasPermission()
         if (enabled) {
           this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification) => {
             console.log('notificationDisplayedListener', notification)
-            // Process your notification as required
-            // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
+            this.routeUserFromNotification(notification)
           })
           this.notificationListener = firebase.notifications().onNotification((notification) => {
             console.log('notificationListener', notification)
-            // Process your notification as required
+            this.routeUserFromNotification(notification)
           })
+          this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
+            // Get the action triggered by the notification being opened
+            const action = notificationOpen.action
+            // Get information about the notification that was opened
+            const notification = notificationOpen.notification
+            this.routeUserFromNotification(notification)
+          });
         } else {
           // user doesn't have permission
         }
     } else {
       // user doesn't have a device token yet
+    }
+  }
+
+  routeUserFromNotification = (notification) => {
+    const { data } = notification
+    if (data && data.route) {
+      this.props.navigation.navigate(data.route, { ...data })
     }
   }
 
