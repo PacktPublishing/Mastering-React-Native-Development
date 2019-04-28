@@ -1,7 +1,13 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 import { Easing, Animated } from 'react-native'
 
-import { Login, Welcome, SwipeDeck, FinishedScreen } from './components'
+import {
+  Login,
+  Welcome,
+  SwipeDeck,
+  FinishedScreen,
+  Notification,
+} from './components'
 
 export const SCREEN_TRANSITION_LENGTH = 750
 
@@ -54,10 +60,13 @@ const SignedInView = createStackNavigator(
     },
     SwipeDeckNav: {
       screen: SwipeDeckNavigator,
-    }
+    },
+    Notification: {
+      screen: Notification
+    },
   },
   {
-    initialRouteName: "SwipeDeckNav",
+    initialRouteName: "Notification",
     headerMode: 'none',
   }
 )
