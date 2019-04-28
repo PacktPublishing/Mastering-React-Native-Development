@@ -23,8 +23,6 @@ class NotificationContainer extends Component {
             this.routeUserFromNotification(notification)
           })
           this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
-            // Get the action triggered by the notification being opened
-            const action = notificationOpen.action
             // Get information about the notification that was opened
             const notification = notificationOpen.notification
             this.routeUserFromNotification(notification)
