@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Platform } from 'react-native'
 import firebase from 'react-native-firebase'
 
 import Notification from './Notification'
 
+const ANDROID_CHANNEL_ID = 'test_channel_id'
 class NotificationContainer extends Component {
   constructor(props) {
     super(props)
@@ -26,7 +28,15 @@ class NotificationContainer extends Component {
             // Get information about the notification that was opened
             const notification = notificationOpen.notification
             this.routeUserFromNotification(notification)
-          });
+          })
+          // Build a channel
+          if (Platform.OS === 'android') {
+            const channel = new firebase.notifications.Android.Channel(ANDROID_CHANNEL_ID, 'Test Channel', firebase.notifications.Android.Importance.High)
+              .setDescription('My apps test channel')
+
+            // Create the channel
+            firebase.notifications().android.createChannel(channel)
+          }
         } else {
           // user doesn't have permission
         }
@@ -47,9 +57,25 @@ class NotificationContainer extends Component {
     this.notificationListener();
   }
 
+  displayNotification() {
+    const notification = new firebase.notifications.Notification()
+      .setNotificationId('notificationId')
+      .setTitle('My notification title')
+      .setBody('My notification body')
+      .setData({
+        key1: 'value1',
+        key2: 'value2',
+      })
+      .android.setChannelId(ANDROID_CHANNEL_ID)
+
+    firebase.notifications().displayNotification(notification)
+  }
+
   render() {
     return (
-      <Notification />
+      <Notification
+        displayNotification={this.displayNotification}
+      />
     )
   }
 }
