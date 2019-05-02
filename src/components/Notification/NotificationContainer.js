@@ -16,10 +16,6 @@ class NotificationContainer extends Component {
     if (fcmToken) {
       const enabled = await firebase.messaging().hasPermission()
         if (enabled) {
-          this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification) => {
-            console.log('notificationDisplayedListener', notification)
-            this.routeUserFromNotification(notification)
-          })
           this.notificationListener = firebase.notifications().onNotification((notification) => {
             console.log('notificationListener', notification)
             this.routeUserFromNotification(notification)
@@ -60,13 +56,15 @@ class NotificationContainer extends Component {
   displayNotification() {
     const notification = new firebase.notifications.Notification()
       .setNotificationId('notificationId')
-      .setTitle('My notification title')
-      .setBody('My notification body')
+      .setTitle('Button Clicked!')
+      .setBody('You clicked the button and got this notification')
       .setData({
-        key1: 'value1',
-        key2: 'value2',
+        route: 'Welcome',
+        meow: 'woof',
       })
+      .setSound(firebase.notifications.Android.Defaults.Sound)
       .android.setChannelId(ANDROID_CHANNEL_ID)
+      .android.setPriority(firebase.notifications.Android.Priority.High)
 
     firebase.notifications().displayNotification(notification)
   }
