@@ -25,9 +25,10 @@ class NotificationContainer extends Component {
             const notification = notificationOpen.notification
             this.routeUserFromNotification(notification)
           })
+          
           // Build a channel
           if (Platform.OS === 'android') {
-            const channel = new firebase.notifications.Android.Channel(ANDROID_CHANNEL_ID, 'Test Channel', firebase.notifications.Android.Importance.High)
+            const channel = new firebase.notifications.Android.Channel(ANDROID_CHANNEL_ID, 'Test Channel', firebase.notifications.Android.Importance.Max)
               .setDescription('My apps test channel')
 
             // Create the channel
