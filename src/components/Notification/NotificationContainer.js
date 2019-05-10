@@ -42,6 +42,8 @@ class NotificationContainer extends Component {
     }
   }
 
+  
+
   routeUserFromNotification = (notification) => {
     const { data } = notification
     if (data && data.route) {
@@ -50,8 +52,8 @@ class NotificationContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.notificationDisplayedListener();
-    this.notificationListener();
+    this.notificationOpenedListener()
+    this.notificationListener()
   }
 
   displayNotification() {
