@@ -26,6 +26,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb801348243543134</string>
+				<string>packtexampleapp</string>
 			</array>
 		</dict>
 	</array>

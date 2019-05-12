@@ -66,7 +66,7 @@ const SignedInView = createStackNavigator(
     },
   },
   {
-    initialRouteName: "Notification",
+    initialRouteName: "Welcome",
     headerMode: 'none',
   }
 )

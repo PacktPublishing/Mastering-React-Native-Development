@@ -1,7 +1,7 @@
 import { createBottomTabNavigator, createStackNavigator, Header } from 'react-navigation'
 
 import { AccountScreen } from './Account'
-import { CardFeed } from './CardFeed'
+import { CardFeed, CardScreen } from './CardFeed'
 
 const FeedStack = createStackNavigator(
   {
@@ -11,6 +11,12 @@ const FeedStack = createStackNavigator(
         headerTitle: "News Feed"
       }
     },
+    Card: {
+      screen: CardScreen,
+      navigationOptions: {
+        headerTitle: "Card"
+      },
+    }
   },
   {
     navigationOptions: {

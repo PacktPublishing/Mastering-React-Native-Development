@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Linking, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -9,9 +10,35 @@ import { getVisibleImages } from './selectors'
 
 class CardFeedContainer extends Component {
   componentDidMount () {
+    if (Platform.OS === 'android') {
+      Linking.getInitialURL().then(url => {
+        this.navigate(url)
+      })
+    } else {
+      Linking.addEventListener('url', this.handleOpenURL)
+    }
     this.props.navigation.setParams({ logoutFunction: this.logout })
     // Always get the first page of images on mount
     this.props.cardFeedActions.getImages(1)
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleOpenURL)
+  }
+
+  handleOpenURL = (event) => {
+    this.navigate(event.url)
+  }
+
+  navigate = (url) => {
+    const { navigate } = this.props.navigation
+    const route = url.replace(/.*?:\/\//g, '')
+    const id = route.match(/\/([^\/]+)\/?$/)[1]
+    const routeName = route.split('/')[0]
+    console.log(id, routeName)
+    if (routeName === 'Card') {
+      navigate(routeName, { id })
+    }
   }
 
   logout = () => {
@@ -25,6 +52,10 @@ class CardFeedContainer extends Component {
     }
   }
 
+  onCardPress = (card) => {
+    this.props.navigation.navigate('Card', { card })
+  }
+
   render() {
     return (
       <CardFeed
@@ -33,6 +64,7 @@ class CardFeedContainer extends Component {
         getImages={this.props.cardFeedActions.getImages}
         onEndReached={this.onEndReached}
         onCardLikeToggle={this.props.cardFeedActions.onCardLikeToggle}
+        onCardPress={this.onCardPress}
       />
     )
   }

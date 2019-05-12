@@ -13,6 +13,7 @@
 #import <Firebase.h>
 #import "RNFirebaseNotifications.h"
 #import "RNFirebaseMessaging.h"
+#import <React/RCTLinkingManager.h>
 
 @implementation AppDelegate
 
@@ -47,7 +48,9 @@
     sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
     annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
   ];
-  // Add any custom logic here.
+  if (!handled) {
+    handled = [RCTLinkingManager application:application openURL:url options:options];
+  }
   return handled;
 }
 

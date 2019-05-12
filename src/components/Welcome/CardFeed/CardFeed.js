@@ -14,7 +14,7 @@ class CardFeed extends React.PureComponent {
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Body>
-          <ImageCard card={imageObjects[item]} />
+          <ImageCard onCardPress={this.props.onCardPress} card={imageObjects[item]} />
         </Body>
       </ListItem>
     )
