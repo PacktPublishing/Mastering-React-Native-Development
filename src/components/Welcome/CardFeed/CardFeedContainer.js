@@ -9,11 +9,10 @@ import { logoutUser } from '../../../utils'
 import { getVisibleImages } from './selectors'
 
 class CardFeedContainer extends Component {
-  componentDidMount () {
+  async componentDidMount () {
     if (Platform.OS === 'android') {
-      Linking.getInitialURL().then(url => {
-        this.navigate(url)
-      })
+      const initialUrl = await Linking.getInitialURL()
+      if (initialUrl) this.navigate(initialUrl)
     } else {
       Linking.addEventListener('url', this.handleOpenURL)
     }
@@ -33,11 +32,11 @@ class CardFeedContainer extends Component {
   navigate = (url) => {
     const { navigate } = this.props.navigation
     const route = url.replace(/.*?:\/\//g, '')
-    const id = route.match(/\/([^\/]+)\/?$/)[1]
+    const uuid = route.match(/\/([^\/]+)\/?$/)[1]
     const routeName = route.split('/')[0]
-    console.log(id, routeName)
-    if (routeName === 'Card') {
-      navigate(routeName, { id })
+
+    if (routeName === 'Card' && uuid) {
+      navigate(routeName, { uuid })
     }
   }
 

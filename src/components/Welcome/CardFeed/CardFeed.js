@@ -1,6 +1,6 @@
 import React from 'react'
-import { FlatList } from 'react-native'
-import { Container, Text, Body, ListItem, Switch, Content } from 'native-base'
+import { FlatList, TouchableOpacity } from 'react-native'
+import { Container, Text, Body, ListItem, Switch } from 'native-base'
 import Loader from '../../shared/Loader'
 
 import ImageCard from './ImageCard'
@@ -9,12 +9,17 @@ import shallowEqual from 'react-redux/lib/utils/shallowEqual'
 const _keyExtractor = (item) => item.toString()
 
 class CardFeed extends React.PureComponent {
+  onImageCardPress = (card) => this.props.onCardPress(card)
+
   renderItem = ({ item }) => {
     const { imageObjects } = this.props
+    const onImageCardPress = this.onImageCardPress.bind(this, imageObjects[item])
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Body>
-          <ImageCard onCardPress={this.props.onCardPress} card={imageObjects[item]} />
+          <TouchableOpacity style={{ flex: 1 }} onPress={onImageCardPress}>
+            <ImageCard card={imageObjects[item]} />
+          </TouchableOpacity>
         </Body>
       </ListItem>
     )

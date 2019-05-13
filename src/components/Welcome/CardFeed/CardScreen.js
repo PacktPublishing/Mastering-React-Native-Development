@@ -1,8 +1,6 @@
 import React from 'react'
 import { Image } from 'react-native'
-import { Content, Container } from 'native-base'
-import Config from 'react-native-config'
-import qs from 'qs'
+import { Container } from 'native-base'
 
 
 class CardScreen extends React.PureComponent {
@@ -14,38 +12,22 @@ class CardScreen extends React.PureComponent {
       card: {},
     }
   }
+
   async componentDidMount () {
-    const { card, id } = this.props.navigation.state.params
-    if (!card) {
-      const params = {
-        key: Config.PIXABAY_KEY,
-        id: id
-      }
-      // This query will look like this: key=ABC123&image_type=photo
-      const query = `https://pixabay.com/api?${qs.stringify(params)}`
-      // Get the images from the pixabay server
-      const imageResponse = await fetch(query)
-      const imageObject = await imageResponse.json()
-      const card = imageObject.hits[0]
-      this.setState({
-        loading: false,
-        card,
-      })
-    } else {
-      this.setState({
-        loading: false,
-        card,
-      })
-    }
+    const { card, uuid } = this.props.navigation.state.params
+    this.setState({
+      loading: false,
+      imageUri: card ? card.largeImageURL : `https://pixabay.com/get/${uuid}.jpg`
+    })
   }
 
   render () {
-    const { card, loading } = this.state
+    const { imageUri, loading } = this.state
     return (
       <Container>
           {!loading &&
             <Image
-              source={{ uri: card.largeImageURL }}
+              source={{ uri: imageUri }}
               resizeMode="contain"
               style={{
                 width: '100%',
