@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation'
-
+import { bugsnag } from 'src/utils' 
 import * as loginActions from './actions'
 import Login from './Login'
 
@@ -10,6 +10,7 @@ class LoginContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {}
+    bugsnag.notify(new Error("Test error")) 
   }
 
   componentDidUpdate(prevProps) {

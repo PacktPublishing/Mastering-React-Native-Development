@@ -43,6 +43,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* PacktExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PacktExampleTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2E173EAF22224DE400851D32 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E173E8B22224DCE00851D32 /* libRCTFBSDK.a */; };
+		2E358260228D02B200EBB02F /* libBugsnagReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E358232228D02AA00EBB02F /* libBugsnagReactNative.a */; };
 		2E5274422248EB8F00247FA9 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E52743C2248EB8500247FA9 /* libReactNativeConfig.a */; };
 		2E8136D02285B28700B33CBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E8136CF2285B28600B33CBC /* GoogleService-Info.plist */; };
 		32EA836BFC214453AEF1CCFD /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557788BC8B9240FA9D342B5A /* libRNGestureHandler.a */; };
@@ -207,6 +208,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
+		};
+		2E358231228D02AA00EBB02F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E35822B228D02AA00EBB02F /* BugsnagReactNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8AD256131D6DE5F600C7D842;
+			remoteInfo = BugsnagReactNative;
 		};
 		2E52743B2248EB8500247FA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -424,6 +432,7 @@
 		2D02E4901E0B4A5D006451C7 /* PacktExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PacktExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E173E8122224DCE00851D32 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
+		2E35822B228D02AA00EBB02F /* BugsnagReactNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BugsnagReactNative.xcodeproj; path = "../node_modules/bugsnag-react-native/cocoa/BugsnagReactNative.xcodeproj"; sourceTree = "<group>"; };
 		2E5274102248EB8500247FA9 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		2E8136CF2285B28600B33CBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38AFABABC64D25874CA64A9B /* libPods-PacktExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PacktExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -473,6 +482,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E358260228D02B200EBB02F /* libBugsnagReactNative.a in Frameworks */,
 				2E5274422248EB8F00247FA9 /* libReactNativeConfig.a in Frameworks */,
 				2E173EAF22224DE400851D32 /* libRCTFBSDK.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
@@ -658,6 +668,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E35822C228D02AA00EBB02F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E358232228D02AA00EBB02F /* libBugsnagReactNative.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E5274112248EB8500247FA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +767,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2E35822B228D02AA00EBB02F /* BugsnagReactNative.xcodeproj */,
 				2E5274102248EB8500247FA9 /* ReactNativeConfig.xcodeproj */,
 				2E173E8122224DCE00851D32 /* RCTFBSDK.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -947,6 +966,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 2E35822C228D02AA00EBB02F /* Products */;
+					ProjectRef = 2E35822B228D02AA00EBB02F /* BugsnagReactNative.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -1151,6 +1174,13 @@
 			fileType = archive.ar;
 			path = libRCTFBSDK.a;
 			remoteRef = 2E173E8A22224DCE00851D32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E358232228D02AA00EBB02F /* libBugsnagReactNative.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBugsnagReactNative.a;
+			remoteRef = 2E358231228D02AA00EBB02F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2E52743C2248EB8500247FA9 /* libReactNativeConfig.a */ = {

@@ -1,5 +1,9 @@
 import * as Keychain from 'react-native-keychain'
 import { NavigationActions, StackActions } from 'react-navigation'
+import { Client as BugSnagClient } from 'bugsnag-react-native'
+import Config from 'react-native-config'
+
+export const bugsnag = new BugSnagClient(Config.BUGSNAG_KEY) 
 
 export const isSignedIn = async () => {
   try {

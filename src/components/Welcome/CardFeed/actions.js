@@ -22,6 +22,7 @@ const getImagesError = (error) => ({
 export const getImages = (page, orientation = 'all') => async (dispatch) => {
   dispatch(getImagesStart())
   try {
+    console.log(Config.PIXABAY_KEY)
     const params = {
       key: Config.PIXABAY_KEY,
       'image_type': 'photo',
@@ -34,6 +35,7 @@ export const getImages = (page, orientation = 'all') => async (dispatch) => {
     const imageResponse = await fetch(query)
 
     // convert the response to a JSON object
+    console.log('here', imageResponse)
     const imageObject = await imageResponse.json()
 
     // const imageObject = preLoadedImageResponse
